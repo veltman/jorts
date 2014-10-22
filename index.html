@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ankle Boots</title>
+    <style>
+      body {
+        font-family: helvetica,arial,sans-serif;
+        font-weight: 36px;
+        font-weight: bold;
+      }
+
+      img {
+        position: absolute;
+        left: -999px;
+        top: -999px;
+      }
+
+      div {
+        position: absolute;
+        left: -999px;
+        top: -999px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <div>JORTS</div>
+    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <div>JORTS</div>
+    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <div>JORTS</div>
+    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <div>JORTS</div>
+    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <div>JORTS</div>
+    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <div>JORTS</div>
+    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <div>JORTS</div>
+    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <div>JORTS</div>
+    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <div>JORTS</div>
+    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <div>JORTS</div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <script>
+
+      $("img,div").each(function(i){
+
+        randomize($(this),($(this).prop("tagName").toLowerCase() == "div"));
+
+      });
+
+      /*$("div").each(function(i){
+
+        randomize($(this),true);
+
+      })*/
+
+      function randomize($el,text) {
+
+        if (text) {
+          $el.css("text-transform",choose(["lowercase","uppercase"]))
+             .css("font-size",(40+Math.round(Math.random()*48))+"px")
+             .css("font-family",choose(["helvetica,arial,sans-serif","'cooper black',serif","'comic sans',sans-serif","papyrus,sans-serif","menlo,courier,monospace"]))
+             .css("color",choose(["fuchsia","deeppink","deepskyblue","chartreuse","aqua","darkorange","lawngreen"]));
+        }
+
+        var w = $el.width(),
+            h = $el.height(),
+            outerW = $(window).width(),
+            outerH = $(window).height(),
+            start = choose(["top","left","right","bottom"]);
+            end = choose(["top","left","right","bottom"]);
+
+        while (end == start) {
+          end = choose(["top","left","right","bottom"]);
+        }
+
+        function getPoint(type) {
+
+          var left,top;
+
+          if (type == "top") {
+            top = (-h-100)+"px";
+          } else if (type == "bottom") {
+            top = (outerH+100)+"px";
+          } else {
+            top = (Math.random()*(outerH-h))+"px";
+          }
+
+          if (type == "left") {
+            left = (-w-100)+"px";
+          } else if (type == "right") {
+            left = (outerW+100)+"px";
+          } else {
+            left = (Math.random()*(outerW-w))+"px";
+          }
+
+          return {
+            "left": left,
+            "top": top
+          };
+
+        }
+
+        start = getPoint(start);
+        end = getPoint(end);
+
+        $el.css("left",start.left).css("top",start.top).css("z-index",Math.round(Math.random()*100));
+
+        $el.animate({
+          "left": end.left,
+          "top": end.top
+        },500+Math.random()*2000,function(){
+          randomize($el,text);
+        })
+
+      }
+
+      function choose(arr) {
+        return arr[Math.floor(Math.random()*arr.length)];
+      }
+
+    </script>
+  </body>
+</html>
