@@ -61,10 +61,12 @@
       function randomize($el,text) {
 
         if (text) {
-          $el.css("text-transform",choose(["lowercase","uppercase"]))
-             .css("font-size",(40+Math.round(Math.random()*48))+"px")
-             .css("font-family",choose(["helvetica,arial,sans-serif","'cooper black',serif","'comic sans',sans-serif","papyrus,sans-serif","menlo,courier,monospace"]))
-             .css("color",choose(["fuchsia","deeppink","deepskyblue","chartreuse","aqua","darkorange","lawngreen"]));
+          $el.css({
+            "text-transform": choose(["lowercase","uppercase"]),
+            "font-size": (40+Math.round(Math.random()*48))+"px",
+            "font-family": choose(["helvetica,arial,sans-serif","'cooper black',serif","'comic sans',sans-serif","papyrus,sans-serif","menlo,courier,monospace"]),
+            "color": choose(["fuchsia","deeppink","deepskyblue","chartreuse","aqua","darkorange","lawngreen"])
+          });
         }
 
         var w = $el.width(),
@@ -108,14 +110,22 @@
         start = getPoint(start);
         end = getPoint(end);
 
-        $el.css("left",start.left).css("top",start.top).css("z-index",Math.round(Math.random()*100));
-
-        $el.animate({
-          "left": end.left,
-          "top": end.top
-        },500+Math.random()*2000,function(){
-          randomize($el,text);
+        $el.css({
+          "left": start.left,
+          "top": start.top,
+          "z-index": Math.round(Math.random()*100)
         })
+
+        $el.animate(
+          {
+            "left": end.left,
+            "top": end.top
+          },
+          500+Math.random()*2000,
+          function(){
+            randomize($el,text);
+          }
+        );
 
       }
 
