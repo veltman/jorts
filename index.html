@@ -26,7 +26,7 @@
       }
 
       @media screen and (max-width: 480px) {
-        div.desktop {
+        div#desktop {
           display: none;
         }
       }
@@ -44,7 +44,7 @@
     <div>JORTS</div>
     <img src="jorts.png" />
     <div>JORTS</div>
-    <div class="desktop">
+    <div id="desktop">
       <img src="jorts.png" />
       <div>JORTS</div>
       <img src="jorts.png" />
@@ -60,7 +60,7 @@
 
     <script>
 
-      var $desktop;
+      var $desktop = $("div#desktop");
 
       $("img,div").each(function(i){
 
