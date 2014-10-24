@@ -26,7 +26,7 @@
       }
 
       @media screen and (max-width: 480px) {
-        div.desktop * {
+        div.desktop {
           display: none;
         }
       }
@@ -60,6 +60,8 @@
 
     <script>
 
+      var $desktop;
+
       $("img,div").each(function(i){
 
         randomize($(this),($(this).prop("tagName").toLowerCase() == "div"));
@@ -67,6 +69,10 @@
       });
 
       function randomize($el,text) {
+
+        if (!$desktop.is(":visible")) {
+          return true;
+        }
 
         if (text) {
           $el.css({
