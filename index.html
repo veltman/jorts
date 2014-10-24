@@ -15,6 +15,8 @@
         position: absolute;
         left: -999px;
         top: -999px;
+        width: 247px;
+        height: 220px;
       }
 
       div {
@@ -26,25 +28,25 @@
     </style>
   </head>
   <body>
-    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <img src="jorts.png" />
     <div>JORTS</div>
-    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <img src="jorts.png" />
     <div>JORTS</div>
-    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <img src="jorts.png" />
     <div>JORTS</div>
-    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <img src="jorts.png" />
     <div>JORTS</div>
-    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <img src="jorts.png" />
     <div>JORTS</div>
-    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <img src="jorts.png" />
     <div>JORTS</div>
-    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <img src="jorts.png" />
     <div>JORTS</div>
-    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <img src="jorts.png" />
     <div>JORTS</div>
-    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <img src="jorts.png" />
     <div>JORTS</div>
-    <img src="jorts.png" style="width: 247px; height: 220px;" />
+    <img src="jorts.png" />
     <div>JORTS</div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
@@ -55,12 +57,6 @@
         randomize($(this),($(this).prop("tagName").toLowerCase() == "div"));
 
       });
-
-      /*$("div").each(function(i){
-
-        randomize($(this),true);
-
-      })*/
 
       function randomize($el,text) {
 
@@ -75,7 +71,7 @@
             h = $el.height(),
             outerW = $(window).width(),
             outerH = $(window).height(),
-            start = choose(["top","left","right","bottom"]);
+            start = choose(["top","left","right","bottom"]),
             end = choose(["top","left","right","bottom"]);
 
         while (end == start) {
